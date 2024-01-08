@@ -3,10 +3,6 @@ import { connection } from './config/db';
 import { bookingRouter } from './router/bookinglist';
 import * as cors from 'cors';
 
-const dotenv = require('dotenv');
-
-dotenv.config();
-
 const app = express();
 
 app.use(express.json());
