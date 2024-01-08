@@ -9,7 +9,7 @@
     "dev": "concurrently \"npm run build:watch\" \"npm run serve:watch\"",
     "serve": "node dist/index.ts",
     "serve:watch": "nodemon dist/index.js",
-    "build": "tsc",
+    "build": "tsc --outDir dist",
     "build:watch": "tsc -w"
   },
   "author": "kannan",
