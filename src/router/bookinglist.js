@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.bookingRouter = void 0;
+var express = require("express");
+var bookinglist_1 = require("../controller/bookinglist");
+exports.bookingRouter = express.Router();
+exports.bookingRouter.get("/list", bookinglist_1.getAllBookingList);
+exports.bookingRouter.post("/insert", bookinglist_1.bookTaxi);
+exports.bookingRouter.post("/complaints", bookinglist_1.complaints);
+exports.bookingRouter.post("/joinUs", bookinglist_1.driver);

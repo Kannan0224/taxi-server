@@ -5,12 +5,18 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon"
+    "start": "npm run serve",
+    "dev": "concurrently \"npm run build:watch\" \"npm run serve:watch\"",
+    "serve": "node dist/index.ts",
+    "serve:watch": "nodemon dist/index.js",
+    "build": "tsc",
+    "build:watch": "tsc -w"
   },
   "author": "kannan",
   "license": "ISC",
   "dependencies": {
     "@types/node": "^20.10.6",
+    "concurrently": "^8.2.2",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
