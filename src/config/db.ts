@@ -1,8 +1,8 @@
 const mysql = require('mysql')
 
 export const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'Kannan@123',
-  database: 'bookingtaxi'
+  host: 'sql209.infinityfree.com',
+  user: 'if0_35746164',
+  password: '9Gh5NtuTNIOE',
+  database: 'if0_35746164_taxi'
 });
