@@ -9,9 +9,9 @@ app.use(express.json());
 
 app.use(cors())
 
-const db = connection;
+// const db = connection;
 
-db.connect();
+// db.connect();
 
 app.use("/booking",bookingRouter)
 
