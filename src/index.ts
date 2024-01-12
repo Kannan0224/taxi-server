@@ -15,6 +15,6 @@ db.connect();
 
 app.use("/booking",bookingRouter)
 
-app.listen(3000,()=>{
-    console.log("connected successfully");
+app.listen(process.env.PORT,()=>{
+    console.log("connected successfully",process.env.PORT);
 })
