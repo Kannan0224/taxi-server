@@ -9,9 +9,11 @@ app.use(express.json());
 
 app.use(cors())
 
-// const db = connection;
+const db = connection;
 
-// db.connect();
+db.connect((err)=>{
+    console.log(err)
+});
 
 app.use("/booking",bookingRouter)
 
