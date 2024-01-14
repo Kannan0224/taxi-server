@@ -1,7 +1,7 @@
-import * as express from 'express';
+import express = require('express');
 import { connection } from './config/db';
 import { bookingRouter } from './router/bookinglist';
-import * as cors from 'cors';
+import cors = require('cors');
 
 const app = express();
 
