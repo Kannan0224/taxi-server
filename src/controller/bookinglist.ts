@@ -37,7 +37,7 @@ export const bookTaxi = async(req,res)=>{
                 return;
             }
             const accountSid = 'AC2a45c2fab654ccf3ba3907c1a266a877';
-            const authToken = '541cb772274bc3eaaf1e9bbc6399e012';
+            const authToken = '6084a56e58eaccd1a897ed95d926858c';
             const client = require('twilio')(accountSid, authToken);
             client.messages.create({
                 body: `Booking conformed cutomername ${data.userName} & customerMobileNumber *${data.userMobile}*`,
