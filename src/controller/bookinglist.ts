@@ -4,7 +4,21 @@ const db = connection;
 
 export const getAllBookingList = async (req,res) =>{
     db.query("SELECT * from bookingList",(err,row,feilds)=>{
-        res.send(row)
+        if(row){
+            const arrayOfObjects = row.map(row => {
+                const object = {};
+                for (const key in row) {
+                  if (Object.prototype.hasOwnProperty.call(row, key)) {
+                    object[key] = row[key];
+                  }
+                }
+                return object;
+              });
+            res.send(arrayOfObjects)
+        }
+        if(err){
+            res.sendStatus(500)
+        }
     })
 }
 
