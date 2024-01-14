@@ -15,6 +15,10 @@ db.connect((err)=>{
     console.log(err)
 });
 
+app.use("/",(req,res)=>{
+    res.send("../favicon.ico")
+})
+
 app.use("/booking",bookingRouter)
 
 app.listen(process.env.PORT,()=>{
