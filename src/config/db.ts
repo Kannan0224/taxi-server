@@ -1,9 +1,4 @@
-const mysql = require('mysql')
+import mongoose from "mongoose";
+export const dbConnection = mongoose.connect(process.env.DBURL);
 
-export const connection = mysql.createConnection({
-  host: 'sql12.freesqldatabase.com',
-  user: 'sql12676562',
-  password: 'fVtkrXFLGy',
-  database: 'sql12676562',
-  port : 3306
-});
+

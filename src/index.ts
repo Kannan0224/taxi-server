@@ -1,7 +1,11 @@
 import express = require('express');
-import { connection } from './config/db';
-import { bookingRouter } from './router/bookinglist';
+import * as dotenv from 'dotenv';
 import cors = require('cors');
+
+dotenv.config();
+
+import { dbConnection } from './config/db';
+import { bookingRouter } from './router/bookinglist';
 
 const app = express();
 
@@ -9,13 +13,7 @@ app.use(express.json());
 
 app.use(cors())
 
-const db = connection;
-
-db.connect((err)=>{
-    console.log(err)
-});
-
-
+dbConnection.then(()=>console.log("db Connected successfully")).catch((err)=>console.log(err))
 
 app.use("/booking",bookingRouter)
 
