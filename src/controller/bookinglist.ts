@@ -1,6 +1,8 @@
 
 // import { book, bookService } from "../../Model/bookingModel";
 import { Booking } from "../schema/bookingSchema";
+import { Complaint } from "../schema/complaintSchema";
+import { Driver } from "../schema/driverSchema";
 
 export const getAllBookingList = async (req,res) =>{
     const book = await Booking.find({}).then((response)=>{
@@ -14,9 +16,6 @@ export const getAllBookingList = async (req,res) =>{
          });
     })
 }
-
-
-
 
 export const bookTaxi = async(req,res)=>{
     const book = await Booking.collection.insertOne(req.body).then((response)=>{
@@ -44,50 +43,36 @@ export const bookTaxi = async(req,res)=>{
     });
 }
 
-// export const complaints = async(req,res)=>{
-//     const data = req.body;
-//     db.query(
-//         'INSERT INTO complaints (username ,usermail ,mobileNumber  ,subject , message ) VALUES (? ,?, ?, ?, ?)', 
-//         [data.userName , data.eMail, data.number, data.subject, data.message], 
-//         (err, results, fields) => {
-//             if (err) {
-//                 res.status(200).send({
-//                     message : "server Error",
-//                     status : 'failed',
-//                     bookingId : null
-//                 });
-//                 return;
-//             }
-            
-//             console.log("Inserted successfully:", results);
-//             res.status(200).send({
-//                 message : "booking conformed",
-//                 status : 'success',
-//             });
-//         }
-//     );
-// }
+export const complaints = async(req,res)=>{
+    const complaint = await Complaint.collection.insertOne(req.body).then((response)=>{
+            res.status(200).send({
+                message : "complaint registered",
+                status : 'success',
+                ComplaintId : response.insertedId
+            });
+        })
+        .catch((err)=>{
+            res.status(200).send({
+                message : "server Error",
+                status : 'failed',
+                ComplaintId : null
+             });
+        })
+}
 
-// export const driver = async(req,res)=>{
-//     const data = req.body;
-//     db.query(
-//         'INSERT INTO driver (username ,mobileNumber ,location  ,vechileNumber , vechileType , message ) VALUES (? ,?, ?, ?, ?,?)', 
-//         [data.userName , data.phoneNo, data.location, data.regNo, data.vechileType,data.message], 
-//         (err, results, fields) => {
-//             if (err) {
-//                 res.status(200).send({
-//                     message : "server Error",
-//                     status : 'failed',
-//                     bookingId : null
-//                 });
-//                 return;
-//             }
-            
-//             console.log("Inserted successfully:", results);
-//             res.status(200).send({
-//                 message : "registerd successfully",
-//                 status : 'success',
-//             });
-//         }
-//     );
-// }
+export const driver = async(req,res)=>{
+    const driver = await Driver.collection.insertOne(req.body).then((response)=>{
+        res.status(200).send({
+            message : "Driver registered",
+            status : 'success',
+            RegisteredId : response.insertedId
+        });
+    })
+    .catch((err)=>{
+        res.status(200).send({
+            message : "server Error",
+            status : 'failed',
+            RegisteredId : null
+         });
+    })
+}
