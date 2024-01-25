@@ -25,7 +25,7 @@ export const bookTaxi = async(req,res)=>{
         client.messages.create({
             body: `Booking conformed cutomername ${req.body.userName} & customerMobileNumber *${req.body.userMobile}*`,
             from: '+12029333164',
-            to: '+919894746047'
+            to: '+919087777361'
         }).then(() => {
             res.status(200).send({
                 message : "booking conformed",
