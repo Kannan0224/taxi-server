@@ -5,6 +5,7 @@ import { Complaint } from "../schema/complaintSchema";
 import { Driver } from "../schema/driverSchema";
 
 export const getAllBookingList = async (req,res) =>{
+    console.log("get booking list");
     const book = await Booking.find({}).then((response)=>{
         res.send(response)
     }).catch((error)=>{
@@ -18,6 +19,7 @@ export const getAllBookingList = async (req,res) =>{
 }
 
 export const bookTaxi = async(req,res)=>{
+    console.log("booking taxi");
     const book = await Booking.collection.insertOne(req.body).then((response)=>{
         // const accountSid = process.env.TWILIOSID;
         // const authToken = process.env.TWILIOAUTH;
