@@ -11,12 +11,18 @@ const app = express();
 
 app.use(express.json());
 
-app.use(cors())
-
-dbConnection.then(()=>console.log("db Connected successfully")).catch((err)=>console.log(err))
+app.use(cors());
 
 app.use("/booking",bookingRouter)
 
-app.listen(process.env.PORT,()=>{
-    console.log("connected successfully",process.env.PORT);
-})
+dbConnection.then(()=>{
+    console.log("db Connected successfully");
+    app.listen(process.env.PORT,()=>{
+        console.log("server running successfully",process.env.PORT);
+    })
+
+}).catch((err)=>console.log(err));
+
+
+
+
