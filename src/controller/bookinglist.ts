@@ -19,14 +19,14 @@ export const getAllBookingList = async (req,res) =>{
 
 export const bookTaxi = async(req,res)=>{
     const book = await Booking.collection.insertOne(req.body).then((response)=>{
-        const accountSid = process.env.TWILIOSID;
-        const authToken = process.env.TWILIOAUTH;
-        const client = require('twilio')(accountSid, authToken);
-        client.messages.create({
-            body: `Booking conformed cutomername ${req.body.userName} & customerMobileNumber *${req.body.userMobile}*`,
-            from: '+12029333164',
-            to: '+919087777361'
-        }).then(() => {
+        // const accountSid = process.env.TWILIOSID;
+        // const authToken = process.env.TWILIOAUTH;
+        // const client = require('twilio')(accountSid, authToken);
+        // client.messages.create({
+        //     body: `Booking conformed cutomername ${req.body.userName} & customerMobileNumber *${req.body.userMobile}*`,
+        //     from: '+12029333164',
+        //     to: '+919087777361'
+        // }).then(() => {
             res.status(200).send({
                 message : "booking conformed",
                 status : 'success',
@@ -40,7 +40,6 @@ export const bookTaxi = async(req,res)=>{
                 bookingId : null
              });
         })
-    });
 }
 
 export const complaints = async(req,res)=>{
