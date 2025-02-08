@@ -33,7 +33,7 @@ export const getAllBookingList = async (req,res) =>{
 
 export const bookTaxi = async(req,res)=>{
     console.log("taxi booked");
-    const book = await Booking.collection.insertOne(req.body).then(()=>{
+    const book = await Booking.collection.insertOne(req.body).then((dbresponse)=>{
             const formatDate = formatDateTime(new Date(req.body.userDate));
             const accountSid = process.env.TWILIOSID;
             const authToken = process.env.TWILIOAUTH;
@@ -43,11 +43,11 @@ export const bookTaxi = async(req,res)=>{
                     from: '+13253356233',
                     to: process.env.PHONENUMBER
             }).then((response)=>{
-                console.log(response);
+                console.log(dbresponse.insertedId);
                 res.status(200).send({
                     message : "booking conformed",
                     status : 'success',
-                    bookingId : response.insertedId
+                    bookingId : dbresponse.insertedId
                 });
             }).catch((err)=>{
                 console.log("sns error",err);
